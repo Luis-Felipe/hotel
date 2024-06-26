@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  hotel-db:
+    image: postgres:latest
+    container_name: hotel-db
+    networks:
+      - rede-hotel
+    environment:
+      POSTGRES_DB: hotel_reservation
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword		  
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+  hotel:
+      build: './'
+      container_name: hotel-reservation
+      depends_on:
+        - hotel-db
+      networks:
+        - rede-hotel
+      environment:
+        - DB_HOST=hotel-db
+        - DB_PORT=5432
+        - DB_NAME=hotel_reservation
+        - DB_USER=myuser
+        - DB_PASSWORD=mypassword       
+      ports:
+        - 8080:8080
+
+networks:
+ rede-hotel:
+  driver: bridge
+
