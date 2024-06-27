@@ -35,7 +35,7 @@ public class HotelControllerTest {
 
     @Test
     public void testGetAllHotels() throws Exception {
-        hotelRepository.save(new Hotel(1L, "Hotel Teste", "Localização Teste", 5, null, null));
+        hotelRepository.save(new Hotel(1L, "Hotel Teste", "Localização Teste", 5, null, null , null ));
         mockMvc.perform(get("/hotels")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -44,7 +44,7 @@ public class HotelControllerTest {
 
     @Test
     public void testGetHotelById() throws Exception {
-        Hotel hotel = hotelRepository.save(new Hotel(1L, "Hotel Teste", "Localização Teste", 5, null, null));
+        Hotel hotel = hotelRepository.save(new Hotel(1L, "Hotel Teste", "Localização Teste", 5, null, null, null ));
         mockMvc.perform(get("/hotels/" + hotel.getId())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -63,7 +63,7 @@ public class HotelControllerTest {
 
     @Test
     public void testUpdateHotel() throws Exception {
-        Hotel hotel = hotelRepository.save(new Hotel(1L, "Hotel Teste", "Localização Teste", 5, null, null));
+        Hotel hotel = hotelRepository.save(new Hotel(1L, "Hotel Teste", "Localização Teste", 5, null, null , null ));
         String hotelJson = "{\"nome\": \"Hotel Atualizado\", \"localozacao\": \"Localização Atualizada\", \"avaliacoes\": 4}";
         mockMvc.perform(put("/hotels/" + hotel.getId())
                 .contentType(MediaType.APPLICATION_JSON)
@@ -74,7 +74,7 @@ public class HotelControllerTest {
 
     @Test
     public void testDeleteHotel() throws Exception {
-        Hotel hotel = hotelRepository.save(new Hotel(1L, "Hotel Teste", "Localização Teste", 5, null, null));
+        Hotel hotel = hotelRepository.save(new Hotel(1L, "Hotel Teste", "Localização Teste", 5, null, null , null ));
         mockMvc.perform(delete("/hotels/" + hotel.getId())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent());

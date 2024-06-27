@@ -32,14 +32,14 @@ public class ReservationServiceTest {
 
     @Test
     public void testGetAllReservations() {
-        Reservation reservation = new Reservation(1L, new Date(), new Date(), 4, null, null, null);
+        Reservation reservation = new Reservation(1L, new Date(), new Date(), 4, null, null, null,null );
         when(reservationRepository.findAll()).thenReturn(Collections.singletonList(reservation));
         assertEquals(1, reservationService.getAllReservations().size());
     }
 
     @Test
     public void testGetReservationById() {
-        Reservation reservation = new Reservation(1L, new Date(), new Date(), 4, null, null, null);
+        Reservation reservation = new Reservation(1L, new Date(), new Date(), 4, null, null, null , null );
         when(reservationRepository.findById(1L)).thenReturn(Optional.of(reservation));
         assertEquals(4, reservationService.getReservationById(1L).getAvaliacaoReserva());
     }

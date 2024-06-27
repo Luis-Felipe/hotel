@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.hotel.dto.HotelSearchCriteria;
 import com.example.hotel.model.Hotel;
 import com.example.hotel.repository.HotelRepository;
 
@@ -28,4 +29,16 @@ public class HotelService {
     public void deleteHotel(Long id) {
         hotelRepository.deleteById(id);
     }
+    
+    
+    public List<Hotel> searchHotels(HotelSearchCriteria criteria) {
+        return hotelRepository.findHotels(
+                criteria.getDestino(),
+                criteria.getDataCheckin(),
+                criteria.getDataCheckout(),
+                criteria.getNumeroQuartos(),
+                criteria.getNumeroHospedes()
+        );
+    }
+    
 }

@@ -21,8 +21,9 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String localozacao;
+    private String localizacao;
     private int avaliacoes;
+    private String comodidades;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Room> quartos;

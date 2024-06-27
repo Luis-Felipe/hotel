@@ -35,4 +35,8 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name = "fk_hopedes_id")
     private Guest hospede;
+    
+    @ManyToOne
+    @JoinColumn(name = "pagamento_id")
+    private Payment pagamento;
 }
